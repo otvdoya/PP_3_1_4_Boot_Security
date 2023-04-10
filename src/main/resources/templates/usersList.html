@@ -102,7 +102,7 @@
                                                                         <div class="col-3"></div>
                                                                         <div class="h6 col-6">
                                                                             <label for="userIdEdit">ID</label>
-                                                                            <input th:name="id" th:type="text"  class="form-control" id="userIdEdit" th:value="${user.getId()}" disabled>
+                                                                            <input th:name="id" class="form-control" id="userIdEdit" th:value="${user.getId()}" disabled>
                                                                             <br>
                                                                             <label for="userFirstNameEdit">First Name</label>
                                                                             <input th:name="firstName" th:type="text" class="form-control" id="userFirstNameEdit" th:value="${user.getFirstName()}">
@@ -117,10 +117,10 @@
                                                                             <input th:name="username" th:type="text" class="form-control" id="userEmailEdit" th:value="${user.getUsername()}">
                                                                             <br>
                                                                             <label for="userPasswordEdit">Password</label>
-                                                                            <input th:name="password" th:type="password" class="form-control" id="userPasswordEdit" value="">
+                                                                            <input th:name="password" th:type="password" class="form-control" id="userPasswordEdit" th:value="${user.getPassword()}">
                                                                             <br>
                                                                             <label for="userRolesEdit">Roles</label>
-                                                                            <select th:name="roles" class="form-control" id="userRolesEdit" size="2" multiple required>
+                                                                            <select th:name="roles" class="form-control" id="userRolesEdit" multiple="multiple" size="2">
                                                                                 <option th:each="role: ${roles}" th:value="${role.getId()}" th:selected="${user.getRoles().contains(role)}" th:text="${role.toString()}"></option>
                                                                             </select>
                                                                         </div>
@@ -163,7 +163,7 @@
                                                                             <input th:name="username" th:type="text" class="form-control" id="userEmailDelete" th:value="${user.getUsername()}" disabled>
                                                                             <br>
                                                                             <label for="userRolesDelete">Roles</label>
-                                                                            <select th:name="roles" class="form-control" id="userRolesDelete" size="2" disabled>
+                                                                            <select th:name="roles" class="form-control" id="userRolesDelete" multiple="multiple" size="2" disabled>
                                                                                 <option th:each="role: ${user.getRoles()}" th:text="${role.toString()}"></option>
                                                                             </select>
                                                                         </div>
@@ -216,7 +216,7 @@
                                                             <input type="password" th:field="*{password}" class="form-control" id="new password">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <select class="form-select" th:field="*{roles}">
+                                                            <select class="form-select" multiple="multiple" th:field="*{roles}">
                                                                 <option th:each="role: ${roles}" th:text="${role.toString()}" th:value="${role.id}"></option>
                                                             </select>
                                                         </div>

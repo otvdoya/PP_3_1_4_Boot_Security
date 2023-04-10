@@ -53,7 +53,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void editUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        String oldPassword = userRepository.findById(user.getId()).orElse(null).getPassword();
+        String passwordFromPage = user.getPassword();
+        if (!oldPassword.equals(passwordFromPage)) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userRepository.save(user);
     }
 }
